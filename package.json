@@ -40,6 +40,11 @@
                     "default": false,
                     "description": "Clear terminal before run?"
                 },
+                "runInTerminal.saveAllBeforeRun": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Save all workspace files before run?"
+                },
                 "sendToTerminal.commands": {
                     "type": "array",
                     "items": {

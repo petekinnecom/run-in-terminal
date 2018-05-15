@@ -166,10 +166,19 @@ function runCommand(editor: vscode.TextEditor, args?: Args) {
         console.log(`run-in-terminal: no command found for args: ${JSON.stringify(a)}`);
         return;
     }
-    Term.run(
-        cmd.build(cmdStr)
-    );
+    maybeSave(cfg.get('saveAllBeforeRun')).then(() => {
+        Term.run(
+            cmd.build(cmdStr)
+        );
+    });
+}
 
+function maybeSave(shouldSave: boolean) {
+    if (shouldSave) {
+        return vscode.workspace.saveAll(false)
+    } else {
+        return Promise.resolve(true)
+    }
 }
 
 
